@@ -16,23 +16,21 @@ public class Solution233 {
 */
 
     public static long countDigitOne(int n) {
-        if(n <= 0) return 0;
-        if(n < 10) return 1;
-
-        int based = (int)Math.pow(10, String.valueOf(n).length()-1);
-        int v = n%based;
-        int cfirst = n/based;
-        if(cfirst == 1) {
-            return v+1 + countDigitOne(v) + countDigitOne(based-1);
-        }
-        else {
-            return based + countDigitOne(v) + countDigitOne(based-1) * cfirst;
+        if (n <= 0) return 0;
+        if (n < 10) return 1;
+        int based = (int) Math.pow(10, String.valueOf(n).length() - 1);
+        int v = n % based;
+        int cfirst = n / based;
+        if (cfirst == 1) {
+            return v + 1 + countDigitOne(v) + countDigitOne(based - 1);
+        } else {
+            return based + countDigitOne(v) + countDigitOne(based - 1) * cfirst;
         }
     }
 
 
     public static void main(String[] args) {
-        System.out.println(countDigitOne(1410065408));
+        System.out.println(countDigitOne(2345));
         //    countDigitOne(12113);
         //    countDigitOne(12213);
     }
