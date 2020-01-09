@@ -3,19 +3,21 @@ package com.common.utils;
 public class TreeUtils {
 
     // 用数组建立普通二叉树
-    public static TreeNode buildBinaryTree(TreeNode root, int[] A, int index) {
-        if (index > A.length / 2) {
-            return root;
+    public static TreeNode createBinaryTreeByArray(Integer[] array, int index) {
+        TreeNode tn = null;
+        if (index < array.length) {
+            Integer value = array[index];
+            if (value == null) {
+                return null;
+            }
+            tn = new TreeNode(value);
+            tn.left = createBinaryTreeByArray(array, 2 * index + 1);
+            tn.right = createBinaryTreeByArray(array, 2 * index + 2);
+            return tn;
         }
-        if (index == 1) {
-            root.val = A[0];
-        }
-        root.left = new TreeNode(A[index * 2 - 1]);
-        root.right = new TreeNode(A[index * 2]);
-        buildBinaryTree(root.left, A, index + 1);
-        buildBinaryTree(root.right, A, index + 2);
-        return root;
+        return tn;
     }
-
-
 }
+
+
+
