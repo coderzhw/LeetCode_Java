@@ -1,4 +1,4 @@
-package com.common.utils;
+package com.utils;
 
 public class TreeUtils {
 
