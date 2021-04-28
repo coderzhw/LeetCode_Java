@@ -23,5 +23,4 @@ release.properties
 ##########################
 *.iml
 /.idea/
-/Leetcode.iml
 
