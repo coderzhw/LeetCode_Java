@@ -49,7 +49,7 @@ public class Solution206 {
 
     public static void main(String[] args) {
         int[] arr = {1, 4, 8, 3, 2};
-        ListNode head = ListNodeUtils.create(arr, 5);
+        ListNode head = ListNodeUtils.create(arr);
         ListNodeUtils.printList(head);
         //翻转后再打印单链表
        // ListNode reverseHead = reverseList(head);

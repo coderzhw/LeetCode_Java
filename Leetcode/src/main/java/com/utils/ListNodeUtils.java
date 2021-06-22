@@ -11,7 +11,8 @@ import java.sql.SQLOutput;
 public class ListNodeUtils {
 
     // 创建链表
-    public static ListNode create(int arr[], int n) {
+    public static ListNode create(int arr[]) {
+        int n=arr.length;
         if (n == 0) {
             return null;
         }
@@ -40,7 +41,7 @@ public class ListNodeUtils {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         int[] arr = {1, 4, 8, 3, 2};
-        ListNode head = create(arr, 5);
+        ListNode head = create(arr);
         printList(head);
     }
 
