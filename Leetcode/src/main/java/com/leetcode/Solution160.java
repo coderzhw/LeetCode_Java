@@ -15,11 +15,10 @@ public class Solution160 {
         if (headA == null || headB == null) {
             return null;
         }
-
         ListNode p1 = headA;
         ListNode p2 = headB;
-
         while (p1 != p2) {
+            //这里不能用p1.next==null或者p2.next为空座位判断条件，否则不相交的链表就会陷入死循环
             if (p1 == null) {
                 p1 = headB;
             }else {
@@ -36,8 +35,9 @@ public class Solution160 {
 
 
     public static void main(String[] args) {
+        //这里的示例不能成功输出，因为虽然节点的值相同，但是节点的地址是不同的，所以不能这么创建，应该是在首尾加节点那种方式创建才能验证
         int[] aArr = {4, 1, 8, 4, 5};
-        int[] bArr = {5, 0, 1, 8, 4, 5};
+        int[] bArr = {5, 1, 8, 4, 5};
         ListNode headA = ListNodeUtils.create(aArr);
         ListNode headB = ListNodeUtils.create(bArr);
         ListNodeUtils.printList(getIntersectionNode(headA, headB));
