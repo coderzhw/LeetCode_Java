@@ -12,25 +12,17 @@ import com.utils.ListNodeUtils;
 public class Solution82 {
 
     public static ListNode deleteDuplicates(ListNode head) {
-        ListNode dummyNode = new ListNode(0);
-        ListNode p = dummyNode;
-        ListNode pre=head;
-        ListNode cur=head.next;
-        while (cur != null) {
-
-            if(pre.val==cur.val){
-                pre=cur.next;
-                cur=cur.next.next;
-
-
-
+        ListNode dummyNode = new ListNode(0, head);
+        ListNode cur = dummyNode;
+        while (cur.next != null && cur.next.next != null) {
+            if (cur.next.val == cur.next.next.val) {
+                int x = cur.next.val;
+                while (cur.next != null && cur.next.val == x) {
+                    cur.next = cur.next.next;
+                }
+            } else {
+                cur = cur.next;
             }
-
-
-
-            ListNode tmp = new ListNode(head.val);
-            p.next = tmp;
-            p = p.next;
 
         }
         return dummyNode.next;
