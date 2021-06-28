@@ -2,7 +2,7 @@ package com.utils;
 
 public class TreeUtils {
 
-    // 用数组建立普通二叉树
+    // 用数组建立完全二叉树
     public static TreeNode createBinaryTreeByArray(Integer[] array, int index) {
         TreeNode tn = null;
         if (index < array.length) {
