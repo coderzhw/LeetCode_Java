@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import com.utils.Node;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +10,20 @@ import java.util.Map;
  */
 
 public class Solution138 {
+
+    public static class Node {
+        public int val;
+        public Node next;
+        public Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
+    }
+
+
 
     static Map<Node, Node> copyMap = new HashMap<>();
 
