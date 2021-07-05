@@ -20,7 +20,25 @@ public class Solution113 {
 
     private void dfs(TreeNode root, int targetSum, List<List<Integer>> res, List<Integer> cur) {
         if(null == root) return ;
+        // 左右子树均为空，说明当前节点是一个叶子节点
+        if (root.left == null && root.right == null) {
+            // 满足条件。注意，将最后一个元素加入到集合中
+            if (targetSum - root.val == 0) {
+                cur.add(root.val);
+                res.add(new ArrayList<>(cur));
+                cur.remove(cur.size() - 1);
+            }
+            return;
+        }
+        cur.add(root.val);
+        dfs(root.left, targetSum - root.val, res, cur);
+        dfs(root.right, targetSum - root.val, res, cur);
+        cur.remove(cur.size() - 1);
+    }
 
+    //这种回溯好理解一些
+    private void dfs2(TreeNode root, int targetSum, List<List<Integer>> res, List<Integer> cur) {
+        if(null == root) return ;
         // 遍历左子树
         if (root.left != null) {
             // choose
@@ -48,8 +66,6 @@ public class Solution113 {
             return;
         }
     }
-
-
     public static void main(String[] args) {
         Integer[] arr = {5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 0, 0, 5, 1};
         TreeNode root = TreeUtils.createBinaryTreeByArray(arr, 0);
