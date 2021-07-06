@@ -42,9 +42,13 @@ public class TreeUtils {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {1, 2, null, null, 3, null, null};
+        Integer[] arr = {1, 2, 4, null, null, 5, null, null, 3, 6, null, null, 7, null, null};
         TreeNode root = TreeUtils.createBinaryTree(arr);
         TreeOperation.show(root);
+        //好好体会下这两种创建方式的区别，一种是以数组为基础创建完全二叉树，一种是以前序遍历为基础创建任意二叉树
+        Integer[] arr2 = {1, 2, 3, 4, 5, 6, 7};
+        TreeNode root2 = TreeUtils.createBinaryTreeByArray(arr2, 0);
+        TreeOperation.show(root2);
     }
 }
 
