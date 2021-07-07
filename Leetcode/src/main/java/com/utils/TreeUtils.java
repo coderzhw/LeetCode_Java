@@ -30,7 +30,7 @@ public class TreeUtils {
         return dfs(queue);
     }
 
-    public static TreeNode dfs(Queue<Integer> queue) {
+    private static TreeNode dfs(Queue<Integer> queue) {
         Integer value = queue.poll();
         if (value == null) {
             return null;
@@ -39,6 +39,37 @@ public class TreeUtils {
         tn.left = dfs(queue);
         tn.right = dfs(queue);
         return tn;
+    }
+
+
+    // Encodes a tree to a single string.
+    public static String serialize(TreeNode root) {
+        if (root == null) {
+            return "null";
+        }
+        String left = serialize(root.left);
+        String right = serialize(root.right);
+        return root.val + "," + left + "," + right;
+    }
+
+
+    // Decodes your encoded data to tree.
+    public static TreeNode deserialize(String data) {
+        String[] arr = data.split(",");
+        Queue<String> queue = new LinkedList(Arrays.asList(arr));
+        return dfsDes(queue);
+    }
+
+
+    private static TreeNode dfsDes(Queue<String> queue) {
+        String str = queue.poll();
+        if ("null".equals(str)) {
+            return null;
+        }
+        TreeNode root = new TreeNode(Integer.valueOf(str));
+        root.left = dfsDes(queue);
+        root.right = dfsDes(queue);
+        return root;
     }
 
     public static void main(String[] args) {
