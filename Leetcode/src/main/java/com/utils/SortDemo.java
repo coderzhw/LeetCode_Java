@@ -57,7 +57,6 @@ public class SortDemo {
         int mid = getMid(nums, left, right);
         quickSort(nums, left, mid - 1);
         quickSort(nums, mid + 1, right);
-
         System.out.println(Arrays.toString(nums));
     }
 
@@ -87,12 +86,48 @@ public class SortDemo {
     }
 
 
+    public static void segment(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int center = (left + right) / 2;
+        //先递归排序
+        segment(nums, left, center);
+        segment(nums, center + 1, right);
+        //再合并两个有序的数组
+        merge(nums, left, center, right);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    public static void merge(int[] nums, int left, int center, int right) {
+        int[] tmpArr = new int[right - left + 1];
+        int leftIndex = left;
+        int rightIndex = center + 1;
+        int i = 0;
+        while (leftIndex <= center && rightIndex <= right) {
+            if (nums[leftIndex] < nums[rightIndex]) {
+                tmpArr[i++] = nums[leftIndex++];
+            } else {
+                tmpArr[i++] = nums[rightIndex++];
+            }
+        }
+        while (leftIndex <= center) {
+            tmpArr[i++] = nums[leftIndex++];
+        }
+        while (rightIndex <= right) {
+            tmpArr[i++] = nums[rightIndex++];
+        }
+        System.arraycopy(tmpArr, 0, nums, left, tmpArr.length);
+    }
+
+
     public static void main(String[] args) {
         int[] nums = {6, 5, 3, 7, 2, 4};
-        //  bubleSort(nums);
+        // bubleSort(nums);
         // selectSort(nums);
         // insertSort(nums);
-        quickSort(nums, 0, nums.length - 1);
+        // quickSort(nums, 0, nums.length - 1);
+        // segment(nums, 0, nums.length - 1);
     }
 
 }
