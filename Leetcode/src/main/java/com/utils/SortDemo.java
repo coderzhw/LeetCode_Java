@@ -121,13 +121,42 @@ public class SortDemo {
     }
 
 
+    public static void heapSort(int[] nums) {
+        //1. 构建大根堆
+        for (int i = nums.length / 2 - 1; i >= 0; i--) {
+            adjustHeap(nums, i, nums.length);
+        }
+        //2.交换堆顶元素和最后一个元素，然后调整大根堆
+        for (int j = nums.length - 1; j > 0; j--) {
+            swap(nums, 0, j);
+            adjustHeap(nums, 0, j);
+        }
+
+        System.out.println(Arrays.toString(nums));
+    }
+
+
+    public static void adjustHeap(int[] nums, int index, int length) {
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+        int maxIndex = index;
+        if (left < length && nums[left] > nums[maxIndex]) maxIndex = left;
+        if (right < length && nums[right] > nums[maxIndex]) maxIndex = right;
+        if (maxIndex != index) {
+            swap(nums, index, maxIndex);
+            adjustHeap(nums, maxIndex, length);
+        }
+    }
+
+
     public static void main(String[] args) {
-        int[] nums = {6, 5, 3, 7, 2, 4};
+        int[] nums = {6, 5, 3, 7, 2, 4, 100};
         // bubleSort(nums);
         // selectSort(nums);
         // insertSort(nums);
         // quickSort(nums, 0, nums.length - 1);
         // segment(nums, 0, nums.length - 1);
+        heapSort(nums);
     }
 
 }
