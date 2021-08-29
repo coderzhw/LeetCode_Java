@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LeetCode1 {
+public class Solution1979 {
 
     public  int findGCD(int[] nums) {
         List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
@@ -27,6 +27,6 @@ public class LeetCode1 {
 
     public static void main(String[] args) {
         int[] nums = {2, 5, 6, 9, 10};
-        System.out.println(new LeetCode1().findGCD(nums));
+        System.out.println(new Solution1979().findGCD(nums));
     }
 }

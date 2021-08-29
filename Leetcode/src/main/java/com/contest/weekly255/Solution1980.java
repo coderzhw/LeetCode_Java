@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Leetcode2 {
+public class Solution1980 {
 
     public String findDifferentBinaryString(String[] nums) {
         String result = null;
@@ -35,6 +35,6 @@ public class Leetcode2 {
 
     public static void main(String[] args) {
         String[] nums = {"111", "011", "001"};
-        System.out.println(new Leetcode2().findDifferentBinaryString(nums));
+        System.out.println(new Solution1980().findDifferentBinaryString(nums));
     }
 }
