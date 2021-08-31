@@ -19,8 +19,8 @@ public class Solution118 {
         result.add(first);
         for (int i = 2; i <= numRows; i++) {
             Integer[] ans = new Integer[i];
-            ans[0] = ans[i-1] = 1;
-            for (int j = 1; j < i-1; j++) {
+            ans[0] = ans[i - 1] = 1;
+            for (int j = 1; j < i - 1; j++) {
                 ans[j] = result.get(i - 2).get(j) + result.get(i - 2).get(j - 1);
 
             }
