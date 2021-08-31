@@ -37,7 +37,7 @@ public class Solution43 {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution43().multiply("123","45"));
+        System.out.println(new Solution43().multiply("1234149","454"));
     }
 
 }
