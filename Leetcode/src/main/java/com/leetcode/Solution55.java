@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * @author : zhangwei
- * @description :
+ * @description :跳跃游戏
  * @date: 2021-09-06 18:35
  */
 
