@@ -1,43 +1,32 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * @author : zhangwei
- * @description : 组合总和
- * @date: 2021-08-25 09:55
+ * 最佳买卖股票时机含冷冻期
  */
-
 public class Solution309 {
 
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        List<Integer> path = new ArrayList<>();
-        dfs(candidates, target, 0, path, result);
-        return result;
-    }
+    public int maxProfit(int[] prices) {
+        int len = prices.length;
 
-    public void dfs(int[] candidates, int target, int depth, List<Integer> path, List<List<Integer>> result) {
-        if (target == 0) {
-            result.add(new ArrayList<>(path));
-        }
-        if (target < 0) {
-            return;
-        }
-        for (int i = depth; i < candidates.length; i++) {
-            path.add(candidates[i]);
-            dfs(candidates, target - candidates[i], i, path, result);
-            path.remove(path.size() - 1);
-        }
-    }
+        int[][] dp = new int[len][4];
 
+        dp[0][0] = 0; //不持有股票，今天没卖
+        dp[0][1]=0;//不持股，今天卖出
+        dp[0][2]=-prices[0];// 持有股票,今天买入
+        dp[0][3]=-prices[0];//持有股票,非今天买入
+
+        for (int i = 1; i < len; i++) {
+            dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]);
+            dp[i][1] = Math.max(dp[i - 1][2], dp[i - 1][3])+prices[i];
+            dp[i][2] = dp[i - 1][0] - prices[i];
+            dp[i][3] = Math.max(dp[i-1][2],dp[i-1][3]);
+        }
+
+        return Math.max(dp[len - 1][0], dp[len - 1][1]);
+    }
 
     public static void main(String[] args) {
-        int[] candidates = {2, 3, 5};
-        int target = 8;
-        System.out.println(new Solution309().combinationSum(candidates, target));
+        int[] prices = {1, 2, 3, 0, 2};
+        System.out.println(new Solution309().maxProfit(prices));
     }
-
-
 }
