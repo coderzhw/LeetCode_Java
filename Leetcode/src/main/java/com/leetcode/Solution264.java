@@ -14,7 +14,7 @@ public class Solution264 {
 
     public int nthUglyNumber(int n) {
         Set<Long> s = new HashSet<>();
-        PriorityQueue<Long> queue = new PriorityQueue<>();
+        PriorityQueue<Long> queue = new PriorityQueue<>((o1,o2)->Long.compare(o1,o2));
         int[] nums = {2, 3, 5};
         s.add(1L);
         queue.add(1L);
@@ -34,6 +34,6 @@ public class Solution264 {
 
 
     public static void main(String[] args) {
-        System.out.println(new Solution264().nthUglyNumber(1407));
+        System.out.println(new Solution264().nthUglyNumber(3));
     }
 }
