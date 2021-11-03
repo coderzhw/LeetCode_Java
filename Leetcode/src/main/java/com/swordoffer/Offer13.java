@@ -9,35 +9,35 @@ package com.swordoffer;
 public class Offer13 {
 
 
+    //关键性分析，往右或者下能走完所有可能的格子,不分析把四种情况都遍历一遍也能做出来
     public int movingCount(int m, int n, int k) {
-        int count = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (!check(i, j, k, m,n)) continue;
-                count++;
-            }
-        }
-        return count;
+        boolean[][] used = new boolean[m][n];
+        return dfs(0, 0, m, n, k, used);
     }
 
+    public int dfs(int i, int j, int m, int n, int k, boolean[][] used) {
+        //System.out.println("======i:"+i+"=========j:"+j);
+        if (i < 0 || j < 0 || i >= m || j >= n || used[i][j] || sum(i, j) > k) return 0;
+        used[i][j] = true;
+        return 1 + dfs(i + 1, j, m, n, k, used) +
+                dfs(i, j + 1, m, n, k, used) +
+                dfs(i - 1, j, m, n, k, used) +
+                dfs(i, j - 1, m, n, k, used);
+    }
 
-    public boolean check(int i, int j, int k, int m,int n) {
-        if (i < 0 || j < 0 || i >= m || j >= n) {
-            return false;
-        }
+    public int sum(int i, int j) {
+        int result = 0;
         int ij = Integer.valueOf(i + "" + j);
-        int count = 0;
         while (ij != 0) {
-            count += ij % 10;
+            result += ij % 10;
             ij = ij / 10;
         }
-        if (count > k) return false;
-        System.out.println(i+"========"+j+"======"+count+"==========");
-        return true;
+        return result;
     }
 
+
     public static void main(String[] args) {
-        int m =16, n = 8, k = 4;
+        int m = 16, n = 8, k = 4;
         System.out.println(new Offer13().movingCount(m, n, k));
     }
 
