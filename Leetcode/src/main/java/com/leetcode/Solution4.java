@@ -33,7 +33,7 @@ public class Solution4 {
         //找到k/2一半的位置点
         int i=begin1+Math.min(len1,k/2)-1;
         int j=begin2+Math.min(len2,k/2)-1;
-        //这里不要死记硬背，举一个例子nums1: 1 3 5 7 9 nums2: 24 6 8 10 ,k=5
+        //这里不要死记硬背，举一个例子,看k如何流转的 nums1: 1 3 5 7 9 nums2: 24 6 8 10 ,k=5
         if(nums1[i]<nums2[j]){
           return   getKNum(nums1,i+1,end1,nums2,begin2,end2,k-(i-begin1+1));
         }else {
