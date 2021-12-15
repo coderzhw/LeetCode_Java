@@ -32,18 +32,13 @@ public class Solution206 {
 
     //递归的方案
     public static ListNode reverseList2(ListNode head) {
-        return reverseList(null, head);
-    }
-
-    public static ListNode reverseList(ListNode pre, ListNode cur) {
-        if (cur == null) {
-            return pre;
+        if(head == null || head.next == null) {  //终止条件并不难想
+            return head;
         }
-        ListNode tmp = cur.next;
-        cur.next = pre;
-        pre = cur;
-        cur = tmp;
-        return reverseList(pre, cur);
+        ListNode node = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return node;  //按上面的例子，F(node=1)和F(node=2)它俩反转后的头节点是同一个
     }
 
 
