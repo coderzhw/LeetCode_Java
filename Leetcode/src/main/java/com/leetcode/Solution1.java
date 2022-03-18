@@ -17,7 +17,6 @@ public class Solution1 {
             }
             map.put(nums[i], i);
         }
-        
         return null;
     }
 
