@@ -24,3 +24,9 @@ release.properties
 *.iml
 /.idea/
 
+Leetcode/.project
+Leetcode/.classpath
+Leetcode/.settings/org.eclipse.jdt.apt.core.prefs
+Leetcode/.settings/org.eclipse.core.resources.prefs
+Leetcode/.settings/org.eclipse.jdt.core.prefs
+Leetcode/.settings/org.eclipse.m2e.core.prefs
