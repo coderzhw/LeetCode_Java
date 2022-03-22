@@ -1,1 +1,1 @@
-# LeetCode Solution By Java。
+# LeetCode Solution By Java.
